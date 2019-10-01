@@ -8,10 +8,10 @@ Created on Sun Sep 29 22:00:07 2019
 import re
 
 batch = [] # Initiate a batch txt file at the end to facilitate fidibus
-branch = 'invertebrate'
+branch = 'invertebrate' 
 p = re.compile("\d{3}.\d_")
 f = open(branch + '_latest.txt', 'r')
-for line in f: # Compare against IMD
+for line in f:
     yaml = {}
     entry = line.strip().split('/')
     name = entry[1].split('_')
@@ -22,7 +22,7 @@ for line in f: # Compare against IMD
     yaml['species'] = name[0] + ' ' + name[1]
     yaml['accession'] = info[:match.start()+5]
     yaml['build'] = info[match.start()+6:]
-    L = [yaml['file_name'] + '\n', "    species: " + yaml['species'] + '\n',
+    L = [yaml['file_name'] + ':\n', "    species: " + yaml['species'] + '\n',
          "    source: refseq \n","    branch: " + branch + '\n',
          "    accession: " + yaml['accession'] + '\n',
          "    build: " + yaml['build']]
