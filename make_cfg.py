@@ -7,6 +7,7 @@ Created on Sun Sep 29 22:00:07 2019
 
 import re
 
+batch = [] # Initiate a batch txt file at the end to facilitate fidibus
 branch = 'invertebrate'
 p = re.compile("\d{3}.\d_")
 f = open(branch + '_latest.txt', 'r')
@@ -25,7 +26,11 @@ for line in f: # Compare against IMD
          "    source: refseq \n","    branch: " + branch + '\n',
          "    accession: " + yaml['accession'] + '\n',
          "    build: " + yaml['build']]
-    with open(yaml['file_name'] + ".yml",'w') as f:
-        f.writelines(L) 
-
+    batch.append(yaml['file_name'] + '\n')
+    with open(yaml['file_name'] + ".yml",'w') as y:
+        y.writelines(L) 
 f.close()
+
+# Create the batch text file.
+with open(branch + '.txt') as b:
+    b.writelines(batch)
