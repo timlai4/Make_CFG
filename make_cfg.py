@@ -32,5 +32,5 @@ for line in f:
 f.close()
 
 # Create the batch text file.
-with open(branch + '.txt') as b:
+with open(branch + '.txt','w') as b:
     b.writelines(batch)
