@@ -15,7 +15,7 @@ lftp -e "find;quit" ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/invertebrate/ > in
 This will include all the main directories, including all genome versions. Although this information may be useful, I am only seeking one genome annotation per species here, the latest version. 
 
 ```bash
-grep "latest_assembly_versions" invertebrate.txt > invertebrate_latest.txt
+grep -E "latest_assembly_versions/\w" invertebrate.txt > invertebrate_latest.txt
 ```
 
 The invertebrate_latest.txt file is the one on which the [code](https://github.com/timlai4/Make_CFG/blob/master/make_cfg.py) is written to search. Note that it fulfills the initially stated goal of pulling one (the latest) genome annotation per species. Then, the script will make one YAML file per species so that when run with fidibus, we will have all YAML files for all species in the branch, as well as a convenient batch script to execute the fidibus tasks simultaneously. 
