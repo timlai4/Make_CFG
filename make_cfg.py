@@ -33,4 +33,4 @@ f.close()
 
 # Create the batch text file.
 with open(branch + '.txt','w') as b:
-    b.writelines(batch)
+    b.writelines(set(batch))
