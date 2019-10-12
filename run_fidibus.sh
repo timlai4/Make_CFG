@@ -9,3 +9,4 @@ for species in ${species_list[@]}
 do
     singularity exec -e -B `pwd` aegean.simg fidibus -c=. --refr=$species download prep iloci breakdown stats
 done
+find species -type f -not -name "*.gff3" -and -not -name "*.tsv" -exec rm {} \;
