@@ -40,7 +40,7 @@ for line in f:
          "    accession: " + yaml['accession'] + '\n',
          "    build: " + yaml['build']]
     batch.append(yaml['file_name'] + '\n')
-    with open('viral/' + yaml['file_name'] + ".yml",'w') as y:
+    with open(branch + '/' + yaml['file_name'] + ".yml",'w') as y:
         y.writelines(L) 
 f.close()
 
