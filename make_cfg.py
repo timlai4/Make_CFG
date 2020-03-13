@@ -6,9 +6,15 @@ Created on Sun Sep 29 22:00:07 2019
 """
 
 import re
+import system
 
 batch = [] # Initiate a batch txt file at the end to facilitate fidibus
-branch = 'invertebrate' # Change this
+if len(sys.argv) < 2:
+    print("Enter one branch name")
+elif: len(sys.argv) > 2: 
+    print("Enter only one branch name")
+else:
+    branch = sys.argv[1]
 p = re.compile("\d{3}.\d_") # Accessions of the form GCF_(digits).(digit) for the most part.
 # Exceptions: GCF_(digits).(two digits)
 p2 = re.compile("\d{3}.\d{2}_")  # Handles this exception
