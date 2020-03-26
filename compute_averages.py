@@ -40,9 +40,7 @@ for branch in branches:
     # Split it into three different columns
     quartiles = df.GeneCountQuartiles.str.split(',', expand = True) 
     quartiles.columns = ['one','med','three'] 
-    # The data files were generated with an older version of fidibus that didn't
-    # output the fraction as expected. Recalculate to fix this.
-    df.SingletonFraction = df.Singletons / df.SingletonFraction
+
     means = list(df.mean(axis = 0, skipna = True, numeric_only = True))
     medians = list(df.median(axis = 0, skipna = True, numeric_only = True))
     medians[1] = medians[1] * 10e-7
